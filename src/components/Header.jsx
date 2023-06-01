@@ -9,8 +9,8 @@ function Header() {
       </div>
 
       <div className="right">
-        <span>HOME</span>
-        <span>WRITE YOUR BLOG</span>
+        <span className="nav-link">HOME</span>
+        <span className="nav-link">WRITE YOUR BLOG</span>
       </div>
     </nav>
   );
