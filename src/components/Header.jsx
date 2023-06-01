@@ -1,6 +1,6 @@
-import { NavLink } from 'react-router-dom';
-import '../Css/Header.css';
-import logo from '../Image/brandlogo.png';
+import { NavLink } from "react-router-dom";
+import "../Css/Header.css";
+import logo from "../Image/brandlogo.png";
 
 function Header() {
   return (
