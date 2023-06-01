@@ -1,0 +1,87 @@
+.container {
+  position: relative;
+}
+
+.blogimg {
+  width: 100%;
+  height: 100vh;
+  -webkit-filter: brightness(80%);
+  filter: brightness(80%);
+}
+
+.logo {
+  position: absolute;
+  top: 50px;
+  left: 695px;
+  height: 270px;
+  width: 630px;
+}
+.text {
+  color: #c1c1c1;
+  font-size: 3rem;
+  position: absolute;
+  top: 45%;
+  left: 695px;
+  overflow: hidden;
+  white-space: nowrap;
+  animation: animated-text 2s steps(50, end) 1s 1 normal both;
+}
+@keyframes animated-text {
+  from {
+    width: 0;
+  }
+  to {
+    width: 630px;
+  }
+}
+
+.slogen {
+  color: #c1c1c1;
+  font-size: 20px;
+  position: absolute;
+  top: 63%;
+  left: 695px;
+  width: 630px;
+  /* overflow: hidden;
+  animation: animated-text 5s steps(50, end) 1s 1 normal both;
+  white-space: nowrap; */
+}
+.scrollicon {
+  font-size: 3rem;
+  color: #c1c1c1;
+  position: absolute;
+  top: 85vh;
+  left: 680px;
+  width: 630px;
+}
+
+.logo-animation-enter {
+  opacity: 0;
+  transform: translateY(-50px);
+}
+
+.logo-animation-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 1000ms, transform 1000ms;
+}
+
+.text-animation-enter {
+  opacity: 0;
+}
+
+.text-animation-enter-active {
+  opacity: 1;
+  transition: opacity 1000ms;
+}
+
+.slogan-animation-enter {
+  opacity: 0;
+  transform: translateY(50px);
+}
+
+.slogan-animation-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 1000ms, transform 1000ms;
+}
