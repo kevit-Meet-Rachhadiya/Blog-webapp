@@ -6,8 +6,6 @@ function App() {
     <>
       <Blogs />
       <Header />
-      {/* <Blogs />
-      <Blogs /> */}
     </>
   );
 }
