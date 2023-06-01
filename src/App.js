@@ -1,12 +1,15 @@
-import React from "react";
-import Writeblog from "./components/Writeblog";
-import "./App.css"
-
-
+import Header from "./components/Header";
+import Blogs from "./components/blogs";
+import "./App.css";
 function App() {
-  return(
-    <Writeblog/>
-  )
+  return (
+    <>
+      <Blogs />
+      <Header />
+      <Blogs />
+      <Blogs />
+    </>
+  );
 }
 
 export default App;
