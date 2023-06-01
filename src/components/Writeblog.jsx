@@ -1,6 +1,5 @@
 import React, { useState, useRef } from "react";
-import "../CSS /Writeblog.css";
-// import uploadimg from "../Assest/upload.png";
+import "../Css/Writeblog.css"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCloudArrowUp } from "@fortawesome/free-solid-svg-icons";
 
