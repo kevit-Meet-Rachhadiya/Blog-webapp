@@ -67,7 +67,7 @@ const Writeblog = () => {
 
     const config = {
       method: "POST",
-      url: "http://localhost:1234/api/blogs/addblog",
+      url: "http://192.168.1.90:1234/api/blogs/addblog",
       headers: {
         "content-type": "application/json",
       },
