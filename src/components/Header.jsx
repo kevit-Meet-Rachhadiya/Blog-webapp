@@ -10,10 +10,10 @@ function Header() {
       </div>
 
       <div className="right">
-        <NavLink exact to="/" activeClassName="active-link">
+        <NavLink  to="/" activeClassName="active-link">
           HOME
         </NavLink>
-        <NavLink exact to="/writeBlog" activeClassName="active-link">
+        <NavLink  to="/writeBlog" ClassName="active-link">
           WRITE YOUR BLOG
         </NavLink>
       </div>
