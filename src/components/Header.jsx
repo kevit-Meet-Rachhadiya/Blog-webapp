@@ -1,4 +1,5 @@
-import { NavLink } from "react-router-dom";
+import React from "react";
+import { Link } from "react-router-dom";
 import "../Css/Header.css";
 import logo from "../Image/brandlogo.png";
 
@@ -10,12 +11,12 @@ function Header() {
       </div>
 
       <div className="right">
-        <NavLink exact to="/" activeClassName="active-link">
+        <Link exact to="/" class="nav-link">
           HOME
-        </NavLink>
-        <NavLink exact to="/writeBlog" activeClassName="active-link">
+        </Link>
+        <Link exact to="/writeBlog" class="nav-link">
           WRITE YOUR BLOG
-        </NavLink>
+        </Link>
       </div>
     </nav>
   );
