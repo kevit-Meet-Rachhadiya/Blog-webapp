@@ -18,9 +18,33 @@
 
 .right {
   font-weight: bold;
-  color: white;
 }
 
-.right span {
+.nav-link {
+  text-decoration: none;
+  color: white;
   margin-left: 15px;
+  position: relative;
+  cursor: pointer;
+}
+
+.right .nav-link:hover {
+  color: rgb(210, 210, 210);
+}
+
+.right .nav-link::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  background-color: rgb(210, 210, 210);
+  bottom: -4px;
+  left: 0;
+  transform: scaleX(0);
+  /* transform-origin: left center; */
+  transition: transform 0.5s ease-in-out;
+}
+
+.right .nav-link:hover::after {
+  transform: scaleX(1);
 }

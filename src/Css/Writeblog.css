@@ -1,4 +1,4 @@
-.form-container {
+.form-containers {
   width: 100%;
   height: 45vh;
   background-color: rgb(80, 80, 80);
@@ -88,8 +88,8 @@
   margin-bottom: 20px;
   row-gap: 25px;
 }
-.uploadicon{
-height: 50px;
-width: 50px;
-cursor: pointer;
+.uploadicon {
+  height: 50px;
+  width: 50px;
+  cursor: pointer;
 }
