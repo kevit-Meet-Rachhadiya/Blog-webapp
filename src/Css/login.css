@@ -1,12 +1,17 @@
 .body-container {
-  background: #f6f5f7;
+  /* background: #1a1a1a; */
+  background: rgb(2, 0, 36);
+  background: radial-gradient(
+    circle,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(40, 62, 81, 1) 100%
+  );
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   font-family: "Montserrat", sans-serif;
   height: 100vh;
-  margin: -20px 0 50px;
 }
 .form-container h1 {
   font-weight: bold;
@@ -38,8 +43,8 @@
 
 .form-container button {
   border-radius: 20px;
-  border: 1px solid #ff4b2b;
-  background-color: #ff4b2b;
+  background: #4b79a1;
+  border: none;
   color: #ffffff;
   font-size: 12px;
   font-weight: bold;
@@ -47,6 +52,7 @@
   letter-spacing: 1px;
   text-transform: uppercase;
   transition: transform 80ms ease-in;
+  cursor: pointer;
 }
 
 .form-container button:active {
@@ -83,8 +89,10 @@
 
 .container {
   background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  border-radius: 20px;
+  /* box-shadow: 0px 0px 7px 2px rgb(207, 207, 207); */
+  /* box-shadow: 0px 0px 2px 1px rgba(128, 128, 128, 1); */
+  /* box-shadow: 0px 0px 23px 6px rgb(73 118 157); */
   position: relative;
   overflow: hidden;
   width: 768px;
@@ -122,7 +130,13 @@
   z-index: 5;
   animation: show 0.6s;
 }
-
+.showpassword {
+  display: flex;
+  align-items: center;
+}
+.showpassword-span {
+  font-size: 10px;
+}
 @keyframes show {
   0%,
   49.99% {
@@ -153,9 +167,11 @@
 }
 
 .overlay {
-  background: #ff416c;
-  background: -webkit-linear-gradient(to right, #ff4b2b, #ff416c);
-  background: linear-gradient(to right, #ff4b2b, #ff416c);
+  background: #ff0000;
+  /* background: #1a1a1a; */
+  /* background: -webkit-linear-gradient(to right, #1a1a1a, #222222); */
+  background: linear-gradient(to right, #4b79a1, #283e51);
+  /* background: linear-gradient(315deg, #4c4177 0%, #2f6488 50%); */
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 0 0;
@@ -214,15 +230,16 @@
 }
 .overlay button {
   border-radius: 20px;
-  border: 1px solid #ff4b2b;
-  background-color: #ff4b2b;
-  color: #ffffff;
+  border: 1px solid #ffffff; /* Light border color */
+  background-color: #ffffff; /* Light background color */
+  color: #ffffff; /* Dark text color */
   font-size: 12px;
   font-weight: bold;
   padding: 12px 45px;
   letter-spacing: 1px;
   text-transform: uppercase;
   transition: transform 80ms ease-in;
+  cursor: pointer;
 }
 
 .overlay button:active {
@@ -246,8 +263,8 @@
   margin: 20px 0;
 }
 
-.social-container a {
-  border: 1px solid #dddddd;
+.social-container span {
+  border: 3px solid #dddddd;
   border-radius: 50%;
   display: inline-flex;
   justify-content: center;
@@ -255,4 +272,9 @@
   margin: 0 5px;
   height: 40px;
   width: 40px;
+}
+
+.social-container span:hover {
+  color: blue;
+  cursor: pointer;
 }

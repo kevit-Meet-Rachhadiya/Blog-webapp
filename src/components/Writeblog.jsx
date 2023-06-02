@@ -64,7 +64,7 @@ const Writeblog = () => {
     };
 
     axios
-      .post("https://localhost:1234/api/blogs/addblog", newBlog)
+      .post("https://192.168.1.90:1234/api/blogs/addblog", newBlog)
       .then((response) => {
         console.log(response.data);
 

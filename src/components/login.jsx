@@ -1,10 +1,19 @@
 import React, { useState } from "react";
 import "../Css/login.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGooglePlusG } from "@fortawesome/free-brands-svg-icons";
+import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 
 const Login = () => {
   const [isSignUp, setIsSignUp] = useState(false);
+
+  const myFunction = () => {
+    var passwordInput = document.getElementById("passwordInput");
+    if (passwordInput.type === "password") {
+      passwordInput.type = "text";
+    } else {
+      passwordInput.type = "password";
+    }
+  };
 
   const handleSignUpClick = () => {
     setIsSignUp(true);
@@ -22,16 +31,12 @@ const Login = () => {
             <form action="#">
               <h1>Create Account</h1>
               <div className="social-container">
-                <FontAwesomeIcon icon={faGooglePlusG} size="xl" />
-                {/* <a href="#" className="social">
-                  <i className="fab fa-google-plus-g"></i>
-                </a>
-                <a href="#" className="social">
-                  <i className="fab fa-linkedin-in"></i>
-                </a> */}
+                <span>
+                  <FontAwesomeIcon icon={faGoogle} size="xl" />
+                </span>
               </div>
               <span>or use your email for registration</span>
-              <input type="text" placeholder="Name" />
+              <input type="text" placeholder="Username" />
               <input type="email" placeholder="Email" />
               <input type="password" placeholder="Password" />
               <button>Sign Up</button>
@@ -41,18 +46,23 @@ const Login = () => {
             <form action="#">
               <h1>Sign in</h1>
               <div className="social-container">
-                <FontAwesomeIcon icon={faGooglePlusG} size="xl" />
-                {/* <a href="#" className="social">
-                  <i className="fab fa-google-plus-g"></i>
-                </a>
-                <a href="#" className="social">
-                  <i className="fab fa-linkedin-in"></i>
-                </a> */}
+                <span>
+                  <FontAwesomeIcon icon={faGoogle} size="xl" />
+                </span>
               </div>
               <span>or use your account</span>
               <input type="email" placeholder="Email" />
-              <input type="password" placeholder="Password" />
+              <input
+                type="password"
+                placeholder="Password"
+                id="passwordInput"
+              />
               {/* <a href="#">Forgot your password?</a> */}
+
+              <div className="showpassword">
+                <input type="checkbox" onClick={myFunction} />
+                <span className="showpassword-span">Show Password</span>
+              </div>
               <button>Sign In</button>
             </form>
           </div>

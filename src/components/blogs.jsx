@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState, useEffect } from "react";
 import { CSSTransition } from "react-transition-group";
 import Header from "./Header";
-import { useLocation } from "react-router-dom";
+// import { useLocation } from "react-router-dom";
 
 function Blogs() {
   const [logoVisible, setLogoVisible] = useState(false);
@@ -14,15 +14,15 @@ function Blogs() {
   const [sloganVisible, setSloganVisible] = useState(false);
   const [arrowVisible, setArrowVisible] = useState(false);
 
-  const location = useLocation();
-  const queryParams = new URLSearchParams(location.search);
-  const headingParam = queryParams.get("heading");
-  const contentParam = queryParams.get("content");
-  const categoryParam = queryParams.get("category");
+  // const location = useLocation();
+  // const queryParams = new URLSearchParams(location.search);
+  // const headingParam = queryParams.get("heading");
+  // const contentParam = queryParams.get("content");
+  // const categoryParam = queryParams.get("category");
 
-  const heading = headingParam ? decodeURIComponent(headingParam) : "";
-  const content = contentParam ? decodeURIComponent(contentParam) : "";
-  const category = categoryParam ? decodeURIComponent(categoryParam) : "";
+  // const heading = headingParam ? decodeURIComponent(headingParam) : "";
+  // const content = contentParam ? decodeURIComponent(contentParam) : "";
+  // const category = categoryParam ? decodeURIComponent(categoryParam) : "";
 
   useEffect(() => {
     const timer1 = setTimeout(() => setLogoVisible(true), 1000);
@@ -96,9 +96,9 @@ function Blogs() {
           />
         </div>
         <div class="content-container">
-          <p>{category}</p>
-          <h2>{heading}</h2>
-          <p>{content}</p>
+          <p>category</p>
+          <h2>heading</h2>
+          <p>content</p>
         </div>
       </div>
     </>
