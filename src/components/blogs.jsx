@@ -1,28 +1,19 @@
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import photo from "../Image/blog.png";
 import "../Css/blogs.css";
 import logo from "../Image/brandlogo.png";
 import { faAnglesDown } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useState, useEffect } from "react";
 import { CSSTransition } from "react-transition-group";
 import Header from "./Header";
-// import { useLocation } from "react-router-dom";
 
 function Blogs() {
   const [logoVisible, setLogoVisible] = useState(false);
   const [textVisible, setTextVisible] = useState(false);
   const [sloganVisible, setSloganVisible] = useState(false);
   const [arrowVisible, setArrowVisible] = useState(false);
-
-  // const location = useLocation();
-  // const queryParams = new URLSearchParams(location.search);
-  // const headingParam = queryParams.get("heading");
-  // const contentParam = queryParams.get("content");
-  // const categoryParam = queryParams.get("category");
-
-  // const heading = headingParam ? decodeURIComponent(headingParam) : "";
-  // const content = contentParam ? decodeURIComponent(contentParam) : "";
-  // const category = categoryParam ? decodeURIComponent(categoryParam) : "";
+  const [blogData, setBlogData] = useState([]);
 
   useEffect(() => {
     const timer1 = setTimeout(() => setLogoVisible(true), 1000);
@@ -36,6 +27,17 @@ function Blogs() {
       clearTimeout(timer3);
       clearTimeout(timer4);
     };
+  }, []);
+
+  useEffect(() => {
+    axios
+      .get("http://192.168.1.120:1234/api/blogs/addblog")
+      .then((response) => {
+        setBlogData(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching blog data", error);
+      });
   }, []);
 
   return (
@@ -66,11 +68,7 @@ function Blogs() {
           classNames="slogan-animation"
           unmountOnExit
         >
-          <p className="slogen">
-            𝐄𝐱𝐩𝐥𝐨𝐫𝐞 𝐚 𝐰𝐨𝐫𝐥𝐝 𝐨𝐟 𝐢𝐝𝐞𝐚𝐬, 𝐢𝐧𝐬𝐩𝐢𝐫𝐚𝐭𝐢𝐨𝐧, 𝐚𝐧𝐝 𝐤𝐧𝐨𝐰𝐥𝐞𝐝𝐠𝐞 𝐚𝐭 𝐁𝐥𝐨𝐠𝐢𝐟𝐲.
-            𝐔𝐧𝐥𝐞𝐚𝐬𝐡 𝐲𝐨𝐮𝐫 𝐜𝐫𝐞𝐚𝐭𝐢𝐯𝐢𝐭𝐲, 𝐬𝐡𝐚𝐫𝐞 𝐲𝐨𝐮𝐫 𝐬𝐭𝐨𝐫𝐢𝐞𝐬, 𝐚𝐧𝐝 𝐞𝐧𝐠𝐚𝐠𝐞 𝐰𝐢𝐭𝐡 𝐚
-            𝐯𝐢𝐛𝐫𝐚𝐧𝐭 𝐜𝐨𝐦𝐦𝐮𝐧𝐢𝐭𝐲 𝐨𝐟 𝐩𝐚𝐬𝐬𝐢𝐨𝐧𝐚𝐭𝐞 𝐛𝐥𝐨𝐠𝐠𝐞𝐫𝐬.
-          </p>
+          <p className="slogen">hellooooo</p>
         </CSSTransition>
         <CSSTransition
           in={arrowVisible}
@@ -88,19 +86,18 @@ function Blogs() {
         </CSSTransition>
       </div>
       <Header />
-      <div class="blog-post">
-        <div class="image-container">
-          <img
-            src="https://images.unsplash.com/photo-1665686440627-936e9700a100?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMTc3M3wxfDF8YWxsfDF8fHx8fHwyfHwxNjcxMjc4Mjc5&ixlib=rb-4.0.3&q=80&w=600"
-            alt="BlogPostImage"
-          />
+      {blogData.map((blog) => (
+        <div className="blog-post" key={blog.id}>
+          <div className="image-container">
+            <img src={blog.coverimage} alt="BlogPostImage" />
+          </div>
+          <div className="content-container">
+            <p>{blog.categories}</p>
+            <h2>{blog.headings}</h2>
+            <p>{blog.contents}</p>
+          </div>
         </div>
-        <div class="content-container">
-          <p>category</p>
-          <h2>heading</h2>
-          <p>content</p>
-        </div>
-      </div>
+      ))}
     </>
   );
 }
@@ -138,7 +135,7 @@ export default Blogs;
 
 //   return (
 //     <>
-//       <div className="container">
+//       <div className="containers">
 //         <img className="blogimg" src={photo} alt="Logo" />
 //         <CSSTransition
 //           in={logoVisible}
@@ -194,8 +191,9 @@ export default Blogs;
 //           />
 //         </div>
 //         <div class="content-container">
-//           <h2>Blog Post Heading</h2>
-//           <p>Blog post description goes here...</p>
+//           <p>category</p>
+//           <h2>heading</h2>
+//           <p>content</p>
 //         </div>
 //       </div>
 //     </>

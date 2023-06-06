@@ -39,11 +39,12 @@ const Login = () => {
               <input type="text" placeholder="Username" />
               <input type="email" placeholder="Email" />
               <input type="password" placeholder="Password" />
+              <br />
               <button>Sign Up</button>
             </form>
           </div>
           <div className="form-container sign-in-container">
-            <form action="#">
+            <form>
               <h1>Sign in</h1>
               <div className="social-container">
                 <span>
@@ -61,8 +62,11 @@ const Login = () => {
 
               <div className="showpassword">
                 <input type="checkbox" onClick={myFunction} />
-                <span className="showpassword-span">Show Password</span>
+                <span className="showpassword-span">
+                  &nbsp;Show&nbsp;Password
+                </span>
               </div>
+              <br />
               <button>Sign In</button>
             </form>
           </div>
@@ -78,7 +82,7 @@ const Login = () => {
                 </button>
               </div>
               <div className="overlay-panel overlay-right">
-                <h1>Hello, Friend!</h1>
+                <h1>Hello, Friends!</h1>
                 <p>Enter your personal details and start the journey with us</p>
                 <button className="ghost" onClick={handleSignUpClick}>
                   Sign Up
