@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import "../Css/Header.css";
 import logo from "../Image/brandlogo.png";
 
@@ -9,14 +9,13 @@ function Header() {
       <div className="left">
         <img src={logo} alt="Logo" />
       </div>
-
       <div className="right">
-        <Link exact to="/" class="nav-link">
+        <NavLink to="/" className="nav-link">
           HOME
-        </Link>
-        <Link exact to="/writeBlog" class="nav-link">
+        </NavLink>
+        <NavLink to="/writeBlog" className="nav-link">
           WRITE YOUR BLOG
-        </Link>
+        </NavLink>
       </div>
     </nav>
   );

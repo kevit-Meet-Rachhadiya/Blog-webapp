@@ -87,7 +87,7 @@ function Blogs() {
           </p>
         </CSSTransition>
       </div>
-      <Header />
+      <Header/>
       <div class="blog-post">
         <div class="image-container">
           <img
