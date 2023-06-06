@@ -80,6 +80,7 @@ const Writeblog = () => {
           setCategory("");
           setHeading("");
           toast.success("Blog Created Successfully!");
+          console.log(formData);
         } else {
           toast.error("Error creating blog post");
         }
