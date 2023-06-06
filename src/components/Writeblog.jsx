@@ -3,8 +3,13 @@ import axios from "axios";
 import "../Css/Writeblog.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCloudArrowUp } from "@fortawesome/free-solid-svg-icons";
+<<<<<<< HEAD
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+=======
+import { useDispatch } from "react-redux";
+import { blogPostShow } from "./Slice/BlogSlice";
+>>>>>>> 308df2986003b33fde08d0223a8f160e65618f3a
 
 const Writeblog = () => {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -14,6 +19,7 @@ const Writeblog = () => {
   const [heading, setHeading] = useState("");
   const fileInputRef = useRef(null);
   const imageInputRef = useRef(null);
+  const dispatch = useDispatch();
 
   const handleImageClick = (event) => {
     event.preventDefault();
@@ -49,6 +55,7 @@ const Writeblog = () => {
     setHeading(event.target.value);
   };
 
+<<<<<<< HEAD
   const handlePublish = (event) => {
     event.preventDefault();
 
@@ -83,13 +90,59 @@ const Writeblog = () => {
           console.log(formData);
         } else {
           toast.error("Error creating blog post");
+=======
+  const resetForm = () => {
+    setSelectedImage(null);
+    setImages([]);
+    setContent("");
+    setCategory("");
+    setHeading("");
+    // fileInputRef.current.value = "";
+    // imageInputRef.current.value = "";
+  };
+
+  const handlePublish = (event) => {
+    event.preventDefault();
+
+    const formData = {
+      coverimage: selectedImage,
+      categories: category,
+      headings: heading,
+      contents: content,
+      blogimage: {}
+    };
+
+    images.forEach((images, index) => {
+      return (formData.blogimage[`image${index + 1}`] = images);
+    });
+
+    const config = {
+      method: "POST",
+      url: "http://192.168.1.120:1234/api/blogs/addblog",
+      headers: {
+        "content-type": "application/json",
+      },
+      data: formData,
+    };
+    axios(config)
+      .then((response) => {
+        if (response.status === 200) {
+          console.log(formData);
+          dispatch(blogPostShow(response.data))
+          resetForm();
+>>>>>>> 308df2986003b33fde08d0223a8f160e65618f3a
         }
       })
       .catch((error) => {
         console.error("Error creating blog post", error);
+<<<<<<< HEAD
         toast.error("Error creating blog post");
+=======
+>>>>>>> 308df2986003b33fde08d0223a8f160e65618f3a
       });
   };
+
+  // console.log(post)
 
   const generateImageTags = () => {
     return images.map((imageUrl, index) => (
@@ -113,7 +166,12 @@ const Writeblog = () => {
         )}
         {!selectedImage && (
           <div className="uploaditem">
+<<<<<<< HEAD
             <p>Select Cover Image</p>
+=======
+            <p>Select Your Image</p>
+
+>>>>>>> 308df2986003b33fde08d0223a8f160e65618f3a
             <FontAwesomeIcon
               className="uploadicon"
               onClick={handleImageClick}
@@ -121,6 +179,7 @@ const Writeblog = () => {
               fade
               beat
             />
+
             <input
               type="file"
               accept="image/*"
@@ -133,6 +192,7 @@ const Writeblog = () => {
         <div className="category-content">
           <input
             className="category"
+<<<<<<< HEAD
             placeholder="Write Your Category (eg. Art, Nature, Car...)"
             value={category}
             onChange={handleCategoryChange}
@@ -143,6 +203,18 @@ const Writeblog = () => {
             value={heading}
             onChange={handleHeadingChange}
           />
+=======
+            placeholder="Write Your Category"
+            value={category}
+            onChange={handleCategoryChange}
+          ></input>
+          <input
+            className="heading"
+            placeholder="Write Your Heading"
+            value={heading}
+            onChange={handleHeadingChange}
+          ></input>
+>>>>>>> 308df2986003b33fde08d0223a8f160e65618f3a
           <textarea
             name="content"
             className="blog-content"

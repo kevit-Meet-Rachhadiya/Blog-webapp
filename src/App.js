@@ -12,12 +12,15 @@ function App() {
       path: "/",
       element: (
         <div>
-          <Blogs />
+          <Blogs/>
           {/* <Header /> */}
         </div>
       ),
     },
-    { path: "/WriteBlog", element: <Writeblog /> },
+    {
+      path: "/WriteBlog",
+      element: <Writeblog/>,
+    },
   ]);
   return <RouterProvider router={router} />;
 }
