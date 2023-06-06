@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState, useEffect } from "react";
 import { CSSTransition } from "react-transition-group";
 import Header from "./Header";
+import { useSelector } from "react-redux";
 // import { useLocation } from "react-router-dom";
 
 function Blogs() {
@@ -13,6 +14,8 @@ function Blogs() {
   const [textVisible, setTextVisible] = useState(false);
   const [sloganVisible, setSloganVisible] = useState(false);
   const [arrowVisible, setArrowVisible] = useState(false);
+  const posts = useSelector((state) => state.blog.blogPosts);
+  console.log(posts);
 
   // const location = useLocation();
   // const queryParams = new URLSearchParams(location.search);
@@ -87,20 +90,22 @@ function Blogs() {
           </p>
         </CSSTransition>
       </div>
-      <Header/>
-      <div class="blog-post">
-        <div class="image-container">
-          <img
-            src="https://images.unsplash.com/photo-1665686440627-936e9700a100?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMTc3M3wxfDF8YWxsfDF8fHx8fHwyfHwxNjcxMjc4Mjc5&ixlib=rb-4.0.3&q=80&w=600"
-            alt="BlogPostImage"
-          />
+      <Header />
+      {posts.map((post, index) => (
+        <div className="blog-post">
+          <div className="image-container">
+            <img
+              src={post.coverimage}
+              alt="BlogPostImage"
+            />
+          </div>
+          <div className="content-container">
+            <p>{post.headings}</p>
+            <h2>{post.categories}</h2>
+            <p>{post.contents}</p>
+          </div>
         </div>
-        <div class="content-container">
-          <p>category</p>
-          <h2>heading</h2>
-          <p>content</p>
-        </div>
-      </div>
+      ))}
     </>
   );
 }

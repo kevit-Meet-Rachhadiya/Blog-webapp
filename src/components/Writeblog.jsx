@@ -6,7 +6,7 @@ import { faCloudArrowUp } from "@fortawesome/free-solid-svg-icons";
 import { useDispatch } from "react-redux";
 import { blogPostShow } from "./Slice/BlogSlice";
 
-const Writeblog = (props) => {
+const Writeblog = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [images, setImages] = useState([]);
   const [content, setContent] = useState("");
@@ -14,7 +14,7 @@ const Writeblog = (props) => {
   const [heading, setHeading] = useState("");
   const fileInputRef = useRef(null);
   const imageInputRef = useRef(null);
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const handleImageClick = (event) => {
     event.preventDefault();
@@ -56,8 +56,8 @@ const Writeblog = (props) => {
     setContent("");
     setCategory("");
     setHeading("");
-    fileInputRef.current.value = "";
-    imageInputRef.current.value = "";
+    // fileInputRef.current.value = "";
+    // imageInputRef.current.value = "";
   };
 
   const handlePublish = (event) => {
@@ -68,14 +68,12 @@ const Writeblog = (props) => {
       categories: category,
       headings: heading,
       contents: content,
-      blogimage: {},
+      blogimage: {}
     };
 
     images.forEach((images, index) => {
       return (formData.blogimage[`image${index + 1}`] = images);
     });
-
-    console.log(formData);
 
     const config = {
       method: "POST",
@@ -83,12 +81,13 @@ const Writeblog = (props) => {
       headers: {
         "content-type": "application/json",
       },
-      body: formData,
+      data: formData,
     };
     axios(config)
       .then((response) => {
         if (response.status === 200) {
-          dispatch(blogPostShow(response.data.Posts))
+          console.log(formData);
+          dispatch(blogPostShow(response.data))
           resetForm();
         }
       })
