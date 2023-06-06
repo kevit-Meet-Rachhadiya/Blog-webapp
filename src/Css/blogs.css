@@ -91,7 +91,7 @@
 .blog-post {
   display: flex;
   width: 80%;
-  background-color: rgb(255, 0, 0);
+  background-color: rgb(187, 187, 187);
   margin-top: 20px;
   margin-left: 115px;
   padding: 20px;
@@ -127,5 +127,5 @@
 
 .content-container p {
   font-size: 16px;
-  color: #e81212;
+  color: #4012e8;
 }

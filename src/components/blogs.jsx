@@ -7,22 +7,16 @@ import { faAnglesDown } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { CSSTransition } from "react-transition-group";
 import Header from "./Header";
-<<<<<<< HEAD
-=======
 import { useSelector } from "react-redux";
 // import { useLocation } from "react-router-dom";
->>>>>>> 308df2986003b33fde08d0223a8f160e65618f3a
 
 function Blogs() {
   const [logoVisible, setLogoVisible] = useState(false);
   const [textVisible, setTextVisible] = useState(false);
   const [sloganVisible, setSloganVisible] = useState(false);
   const [arrowVisible, setArrowVisible] = useState(false);
-<<<<<<< HEAD
-  const [blogData, setBlogData] = useState([]);
-=======
   const posts = useSelector((state) => state.blog.blogPosts);
-  console.log(posts);
+  // console.log(posts);
 
   // const location = useLocation();
   // const queryParams = new URLSearchParams(location.search);
@@ -33,7 +27,6 @@ function Blogs() {
   // const heading = headingParam ? decodeURIComponent(headingParam) : "";
   // const content = contentParam ? decodeURIComponent(contentParam) : "";
   // const category = categoryParam ? decodeURIComponent(categoryParam) : "";
->>>>>>> 308df2986003b33fde08d0223a8f160e65618f3a
 
   useEffect(() => {
     const timer1 = setTimeout(() => setLogoVisible(true), 1000);
@@ -49,16 +42,16 @@ function Blogs() {
     };
   }, []);
 
-  useEffect(() => {
-    axios
-      .get("http://192.168.1.120:1234/api/blogs/addblog")
-      .then((response) => {
-        setBlogData(response.data);
-      })
-      .catch((error) => {
-        console.error("Error fetching blog data", error);
-      });
-  }, []);
+  // useEffect(() => {
+  //   axios
+  //     .get("http://192.168.1.120:1234/api/blogs/addblog")
+  //     .then((response) => {
+  //       setBlogData(response.data);
+  //     })
+  //     .catch((error) => {
+  //       console.error("Error fetching blog data", error);
+  //     });
+  // }, []);
 
   return (
     <>
@@ -106,30 +99,15 @@ function Blogs() {
         </CSSTransition>
       </div>
       <Header />
-<<<<<<< HEAD
-      {blogData.map((blog) => (
-        <div className="blog-post" key={blog.id}>
-          <div className="image-container">
-            <img src={blog.coverimage} alt="BlogPostImage" />
-          </div>
-          <div className="content-container">
-            <p>{blog.categories}</p>
-            <h2>{blog.headings}</h2>
-            <p>{blog.contents}</p>
-=======
       {posts.map((post, index) => (
         <div className="blog-post">
           <div className="image-container">
-            <img
-              src={post.coverimage}
-              alt="BlogPostImage"
-            />
+            <img src={post.coverimage} alt="BlogPostImage" />
           </div>
           <div className="content-container">
             <p>{post.headings}</p>
             <h2>{post.categories}</h2>
             <p>{post.contents}</p>
->>>>>>> 308df2986003b33fde08d0223a8f160e65618f3a
           </div>
         </div>
       ))}

@@ -9,11 +9,7 @@
     "@fortawesome/free-brands-svg-icons": "^6.4.0",
     "@fortawesome/free-solid-svg-icons": "^6.4.0",
     "@fortawesome/react-fontawesome": "^0.2.0",
-<<<<<<< HEAD
-    "@mui/material": "^5.13.3",
-=======
     "@reduxjs/toolkit": "^1.9.5",
->>>>>>> 308df2986003b33fde08d0223a8f160e65618f3a
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",

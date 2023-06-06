@@ -3,13 +3,10 @@ import axios from "axios";
 import "../Css/Writeblog.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCloudArrowUp } from "@fortawesome/free-solid-svg-icons";
-<<<<<<< HEAD
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-=======
 import { useDispatch } from "react-redux";
 import { blogPostShow } from "./Slice/BlogSlice";
->>>>>>> 308df2986003b33fde08d0223a8f160e65618f3a
 
 const Writeblog = () => {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -55,42 +52,6 @@ const Writeblog = () => {
     setHeading(event.target.value);
   };
 
-<<<<<<< HEAD
-  const handlePublish = (event) => {
-    event.preventDefault();
-
-    if (!selectedImage || !category || !heading || !content) {
-      toast.error("Please fill all the fields!");
-      return;
-    }
-
-    const formData = new FormData();
-    formData.append("coverimage", selectedImage);
-    formData.append("categories", category);
-    formData.append("headings", heading);
-    formData.append("contents", content);
-    images.forEach((image, index) => {
-      formData.append(`blogimage${index}`, image);
-    });
-
-    axios
-      .post("http://192.168.1.120:1234/api/blogs/addblog", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      })
-      .then((response) => {
-        if (response.status === 200) {
-          setSelectedImage(null);
-          setImages([]);
-          setContent("");
-          setCategory("");
-          setHeading("");
-          toast.success("Blog Created Successfully!");
-          console.log(formData);
-        } else {
-          toast.error("Error creating blog post");
-=======
   const resetForm = () => {
     setSelectedImage(null);
     setImages([]);
@@ -103,13 +64,17 @@ const Writeblog = () => {
 
   const handlePublish = (event) => {
     event.preventDefault();
+    if (!selectedImage || !category || !heading || !content) {
+      toast.error("Please fill all the fields");
+      return;
+    }
 
     const formData = {
       coverimage: selectedImage,
       categories: category,
       headings: heading,
       contents: content,
-      blogimage: {}
+      blogimage: {},
     };
 
     images.forEach((images, index) => {
@@ -128,17 +93,14 @@ const Writeblog = () => {
       .then((response) => {
         if (response.status === 200) {
           console.log(formData);
-          dispatch(blogPostShow(response.data))
+          dispatch(blogPostShow(response.data));
           resetForm();
->>>>>>> 308df2986003b33fde08d0223a8f160e65618f3a
+          toast.success("Blog post created successfully!");
         }
       })
       .catch((error) => {
         console.error("Error creating blog post", error);
-<<<<<<< HEAD
         toast.error("Error creating blog post");
-=======
->>>>>>> 308df2986003b33fde08d0223a8f160e65618f3a
       });
   };
 
@@ -166,12 +128,7 @@ const Writeblog = () => {
         )}
         {!selectedImage && (
           <div className="uploaditem">
-<<<<<<< HEAD
             <p>Select Cover Image</p>
-=======
-            <p>Select Your Image</p>
-
->>>>>>> 308df2986003b33fde08d0223a8f160e65618f3a
             <FontAwesomeIcon
               className="uploadicon"
               onClick={handleImageClick}
@@ -192,7 +149,6 @@ const Writeblog = () => {
         <div className="category-content">
           <input
             className="category"
-<<<<<<< HEAD
             placeholder="Write Your Category (eg. Art, Nature, Car...)"
             value={category}
             onChange={handleCategoryChange}
@@ -203,18 +159,6 @@ const Writeblog = () => {
             value={heading}
             onChange={handleHeadingChange}
           />
-=======
-            placeholder="Write Your Category"
-            value={category}
-            onChange={handleCategoryChange}
-          ></input>
-          <input
-            className="heading"
-            placeholder="Write Your Heading"
-            value={heading}
-            onChange={handleHeadingChange}
-          ></input>
->>>>>>> 308df2986003b33fde08d0223a8f160e65618f3a
           <textarea
             name="content"
             className="blog-content"
