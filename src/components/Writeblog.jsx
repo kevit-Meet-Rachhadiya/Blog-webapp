@@ -74,7 +74,7 @@ const Writeblog = () => {
       categories: category,
       headings: heading,
       contents: content,
-      blogimage: {},
+      blogimage: [],
     };
 
     images.forEach((images, index) => {
