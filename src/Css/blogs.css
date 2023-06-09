@@ -87,45 +87,65 @@
 }
 
 /* .......................................................................... */
-
-.blog-post {
+.blog-post-container{
   display: flex;
-  width: 80%;
-  background-color: rgb(187, 187, 187);
-  margin-top: 20px;
-  margin-left: 115px;
-  padding: 20px;
-  border: 5px solid #ccc;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  column-gap: 30px;
+  row-gap: 30px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  padding: 30px;
+}
+.blog-post{
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  /* row-gap: 20px; */
+  background-color:rgb(246, 239, 239);
   border-radius: 20px;
-  height: 50vh;
-}
-
-.image-container {
-  flex: 1;
+  padding: 25px;
   overflow: hidden;
-}
+  min-height: 40vh;
+  width: 60vw;
 
-.image-container img {
-  max-width: 100%;
-  height: 50vh;
-  transition: transform 0.3s ease-in-out;
-}
-
-.image-container:hover img {
-  transform: scale(1.1);
-}
-
-.content-container {
-  flex: 1;
-  padding: 10px;
-}
-
-.content-container h2 {
-  font-size: 24px;
-  margin-bottom: 10px;
 }
 
 .content-container p {
   font-size: 16px;
   color: #4012e8;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  overflow: hidden;
 }
+
+.content-container {
+  display: flex;
+  flex-direction:  column;
+  margin-top: 15px;
+  height: 35vh;
+}
+.buttons{
+  display: flex;
+  column-gap: 15px;
+
+}
+.image-container {
+  transition: transform 0.3s ease-in-out;
+}
+
+.image-container:hover {
+  transform: scale(1.04);
+}
+.blog-maintain-btn{
+  border: 1px solid white;
+  padding: 10px;
+  font-size: 0.9rem;
+  background-color: #0f0c0cde;
+  color: white;
+  border-radius: 5px;
+}
+
+

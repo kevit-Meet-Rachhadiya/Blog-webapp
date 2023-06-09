@@ -5,6 +5,12 @@ import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 
 const Login = () => {
   const [isSignUp, setIsSignUp] = useState(false);
+  const [username, setUsername] = useState("");
+  const [usernameError, setUsernameError] = useState("");
+  const [email, setEmail] = useState("");
+  const [emailError, setEmailError] = useState("");
+  const [password, setPassword] = useState("");
+  const [passwordError, setPasswordError] = useState("");
 
   const myFunction = () => {
     var passwordInput = document.getElementById("passwordInput");
@@ -21,6 +27,77 @@ const Login = () => {
 
   const handleSignInClick = () => {
     setIsSignUp(false);
+    setUsernameError("")
+    setEmailError("")
+    setPasswordError("")
+    setUsername("")
+    setEmail("")
+    setPassword("")
+  };
+
+  const handleUsernameChange = (e) => {
+    const value = e.target.value;
+    setUsername(value);
+    setUsernameError("");
+  };
+
+  const validateUsername = () => {
+    const regex = /^[a-zA-Z0-9_]{3,16}$/;
+
+    if (username.length < 3) {
+      setUsernameError("*Username must be at least 3 characters long.");
+    } else if (username.length > 16) {
+      setUsernameError("*Username cannot exceed 16 characters.");
+    } else if (!regex.test(username)) {
+      setUsernameError(
+        "*Username can only contain letters, numbers, and underscores."
+      );
+    }
+  };
+
+  const handleEmailChange = (e) => {
+    const value = e.target.value;
+    setEmail(value);
+    setEmailError("");
+  };
+
+  const validateEmail = () => {
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!regex.test(email)) {
+      setEmailError("*Please enter a valid email address.");
+    }
+  };
+
+  const handlePasswordChange = (e) => {
+    const value = e.target.value;
+    setPassword(value);
+    setPasswordError("");
+  };
+
+  const validatePassword = () => {
+    const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,16}$/;
+
+    if (password.length < 8 || password.length > 16) {
+      setPasswordError("*Password must be between 8 and 16 characters.");
+    } else if (!regex.test(password)) {
+      setPasswordError(
+        "*Password must contain at least one lowercase letter, one uppercase letter, and one digit."
+      );
+    }
+  };
+
+  const handleSignUpSubmit = (e) => {
+    e.preventDefault();
+
+    validateUsername();
+    validateEmail();
+    validatePassword();
+
+    if (!usernameError && !emailError && !passwordError) {
+      // Perform sign-up logic
+      console.log("Sign up form submitted successfully!");
+    }
   };
 
   return (
@@ -28,7 +105,7 @@ const Login = () => {
       <div className="body-container">
         <div className={`container ${isSignUp ? "right-panel-active" : ""}`}>
           <div className="form-container sign-up-container">
-            <form action="#">
+            <form action="#" onSubmit={handleSignUpSubmit}>
               <h1>Create Account</h1>
               <div className="social-container">
                 <span>
@@ -36,9 +113,30 @@ const Login = () => {
                 </span>
               </div>
               <span>or use your email for registration</span>
-              <input type="text" placeholder="Username" />
-              <input type="email" placeholder="Email" />
-              <input type="password" placeholder="Password" />
+              <input
+                type="text"
+                placeholder="Username"
+                value={username}
+                onChange={handleUsernameChange}
+                onBlur={validateUsername}
+              />
+              {usernameError && <p style={{ color: "red" }}>{usernameError}</p>}
+              <input
+                type="text"
+                placeholder="Email"
+                value={email}
+                onChange={handleEmailChange}
+                onBlur={validateEmail}
+              />
+              {emailError && <p style={{ color: "red" }}>{emailError}</p>}
+              <input
+                type="text"
+                placeholder="Password"
+                value={password}
+                onChange={handlePasswordChange}
+                onBlur={validatePassword}
+              />
+              {passwordError && <p style={{ color: "red" }}>{passwordError}</p>}
               <br />
               <button>Sign Up</button>
             </form>
@@ -52,7 +150,7 @@ const Login = () => {
                 </span>
               </div>
               <span>or use your account</span>
-              <input type="email" placeholder="Email" />
+              <input type="text" placeholder="Email" />
               <input
                 type="password"
                 placeholder="Password"

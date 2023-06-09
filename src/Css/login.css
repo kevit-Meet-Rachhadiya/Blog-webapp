@@ -30,7 +30,7 @@
 }
 
 .form-container span {
-  font-size: 12px;
+  font-size: 13px;
 }
 
 .form-container a {
@@ -53,6 +53,7 @@
   transition: transform 80ms ease-in;
   cursor: pointer;
   font-family: cursive;
+  margin-top: 15px;
 }
 
 .form-container button:active {
@@ -96,14 +97,15 @@
   font-family: cursive;
 }
 
+
 .container {
   background-color: #fff;
   border-radius: 20px;
   position: relative;
   overflow: hidden;
-  width: 768px;
-  max-width: 100%;
-  min-height: 480px;
+  width: 60%;
+  min-height: 660px
+  
 }
 
 .form-container {
@@ -288,3 +290,4 @@
   cursor: pointer;
   border: 3px solid #333;
 }
+

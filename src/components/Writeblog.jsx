@@ -1,12 +1,10 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef} from "react";
 import axios from "axios";
 import "../Css/Writeblog.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCloudArrowUp } from "@fortawesome/free-solid-svg-icons";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useDispatch } from "react-redux";
-import { blogPostShow } from "./Slice/BlogSlice";
 
 const Writeblog = () => {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -16,7 +14,6 @@ const Writeblog = () => {
   const [heading, setHeading] = useState("");
   const fileInputRef = useRef(null);
   const imageInputRef = useRef(null);
-  const dispatch = useDispatch();
 
   const handleImageClick = (event) => {
     event.preventDefault();
@@ -74,12 +71,12 @@ const Writeblog = () => {
       categories: category,
       headings: heading,
       contents: content,
-      blogimage: {},
+      blogimage: images
     };
 
-    images.forEach((images, index) => {
-      return (formData.blogimage[`image${index + 1}`] = images);
-    });
+    // images.forEach((images, index) => {
+    //   return (formData.blogimage[`image${index + 1}`] = images);
+    // });
 
     const config = {
       method: "POST",
@@ -92,8 +89,8 @@ const Writeblog = () => {
     axios(config)
       .then((response) => {
         if (response.status === 200) {
-          console.log(formData);
-          dispatch(blogPostShow(response.data));
+          // console.log(formData);
+          // dispatch(blogPostShow(response.data));
           resetForm();
           toast.success("Blog post created successfully!");
         }
