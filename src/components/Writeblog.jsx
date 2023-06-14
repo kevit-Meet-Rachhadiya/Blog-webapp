@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import axios from "axios";
 import "../Css/Writeblog.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -17,6 +17,10 @@ const Writeblog = () => {
   const fileInputRef = useRef(null);
   const imageInputRef = useRef(null);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const handleImageClick = (event) => {
     event.preventDefault();
@@ -58,14 +62,13 @@ const Writeblog = () => {
     setContent("");
     setCategory("");
     setHeading("");
-    // fileInputRef.current.value = "";
-    // imageInputRef.current.value = "";
   };
 
   const handlePublish = (event) => {
     event.preventDefault();
-    if (!selectedImage || !category || !heading || !content) {
+    if (!selectedImage || !category || !heading || !content || !images) {
       toast.error("Please fill all the fields");
+
       return;
     }
 
@@ -74,16 +77,12 @@ const Writeblog = () => {
       categories: category,
       headings: heading,
       contents: content,
-      blogimage: [],
+      blogimage: images,
     };
-
-    images.forEach((images, index) => {
-      return (formData.blogimage[`image${index + 1}`] = images);
-    });
 
     const config = {
       method: "POST",
-      url: "http://192.168.1.120:1234/api/blogs/addblog",
+      url: "http://192.168.1.150:1234/api/blogs/addblog",
       headers: {
         "content-type": "application/json",
       },
@@ -103,8 +102,6 @@ const Writeblog = () => {
         toast.error("Error creating blog post");
       });
   };
-
-  // console.log(post)
 
   const generateImageTags = () => {
     return images.map((imageUrl, index) => (
@@ -128,7 +125,7 @@ const Writeblog = () => {
         )}
         {!selectedImage && (
           <div className="uploaditem">
-            <p>Select Cover Image</p>
+            <h4>Select Cover Image</h4>
             <FontAwesomeIcon
               className="uploadicon"
               onClick={handleImageClick}
@@ -190,8 +187,8 @@ const Writeblog = () => {
           newestOnTop={false}
           closeOnClick
           rtl={false}
-          pauseOnFocusLoss
-          draggable
+          pauseOnFocusLoss={false}
+          draggable={false}
           pauseOnHover
           theme="colored"
         />

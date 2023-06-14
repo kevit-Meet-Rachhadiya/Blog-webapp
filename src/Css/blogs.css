@@ -1,5 +1,6 @@
 .containers {
   position: relative;
+  height: 100vh;
 }
 
 .blogimg {
@@ -42,9 +43,6 @@
   top: 63%;
   left: 695px;
   width: 630px;
-  /* overflow: hidden;
-  animation: animated-text 5s steps(50, end) 1s 1 normal both;
-  white-space: nowrap; */
 }
 .scrollicon {
   font-size: 3rem;
@@ -91,11 +89,12 @@
 .blog-post {
   display: flex;
   width: 80%;
-  background-color: rgb(187, 187, 187);
-  margin-top: 20px;
+  background-color: #dbd8e3;
+  margin-top: 40px;
+  margin-bottom: 40px;
   margin-left: 115px;
   padding: 20px;
-  border: 5px solid #ccc;
+  border: 2px solid #ccc;
   border-radius: 20px;
   height: 50vh;
 }
@@ -108,24 +107,90 @@
 .image-container img {
   max-width: 100%;
   height: 50vh;
+  border-radius: 20px;
   transition: transform 0.3s ease-in-out;
+  width: fit-content;
 }
 
 .image-container:hover img {
-  transform: scale(1.05);
+  transform: scale(1.03);
 }
 
 .content-container {
   flex: 1;
   padding: 10px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 10px;
+  margin-left: 15px;
 }
 
-.content-container h2 {
-  font-size: 24px;
-  margin-bottom: 10px;
+.content-container h3 {
+  margin-top: -10px;
+  text-transform: uppercase;
+  background-color: #679a23;
+  width: fit-content;
+  padding: 4px;
+  color: white;
+  border: 1px solid #679a23;
+  border-radius: 6px;
+  font-size: 15px;
+}
+
+.content-container h1 {
+  text-transform: capitalize;
 }
 
 .content-container p {
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 20px;
+  letter-spacing: 0.5px;
+}
+
+/* ............................................................................ */
+
+.read-more-button {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  background-color: #606060f5;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
   font-size: 16px;
-  color: #4012e8;
+  cursor: pointer;
+  width: 150px;
+  height: 42px;
+  transition: background-color 0.5s ease-in-out;
+}
+
+.read-more-button:hover {
+  background-color: #414141;
+}
+
+.arrow {
+  margin-left: 8px;
+  animation: arrowAnimation 0.8s infinite;
+}
+
+@keyframes arrowAnimation {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(8px);
+  }
+  100% {
+    transform: translateX(0);
+  }
 }
