@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import "../Css/login.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGoogle } from "@fortawesome/free-brands-svg-icons";
+import { ToastContainer, toast } from "react-toastify";
+
 
 const Login = () => {
   const [isSignUp, setIsSignUp] = useState(false);
@@ -87,6 +89,7 @@ const Login = () => {
     }
   };
 
+  
   const handleSignUpSubmit = (e) => {
     e.preventDefault();
 
@@ -96,7 +99,7 @@ const Login = () => {
 
     if (!usernameError && !emailError && !passwordError) {
       // Perform sign-up logic
-      console.log("Sign up form submitted successfully!");
+      toast.success("Sign up form submitted successfully!");
     }
   };
 
@@ -105,7 +108,7 @@ const Login = () => {
       <div className="body-container">
         <div className={`container ${isSignUp ? "right-panel-active" : ""}`}>
           <div className="form-container sign-up-container">
-            <form action="#" onSubmit={handleSignUpSubmit}>
+            <form onSubmit={handleSignUpSubmit}>
               <h1>Create Account</h1>
               <div className="social-container">
                 <span>
@@ -190,6 +193,18 @@ const Login = () => {
           </div>
         </div>
       </div>
+      <ToastContainer
+position="top-centers"
+autoClose={3000}
+hideProgressBar={false}
+newestOnTop={false}
+closeOnClick
+rtl={false}
+pauseOnFocusLoss
+draggable
+pauseOnHover
+theme="colored"
+/>
     </>
   );
 };
