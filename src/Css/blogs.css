@@ -1,5 +1,6 @@
 .containers {
   position: relative;
+  height: 100vh;
 }
 
 .blogimg {
@@ -42,9 +43,6 @@
   top: 63%;
   left: 695px;
   width: 630px;
-  /* overflow: hidden;
-  animation: animated-text 5s steps(50, end) 1s 1 normal both;
-  white-space: nowrap; */
 }
 .scrollicon {
   font-size: 3rem;
@@ -89,36 +87,108 @@
 /* .......................................................................... */
 .blog-post-container{
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  column-gap: 30px;
-  row-gap: 30px;
-  margin-top: 30px;
-  margin-bottom: 30px;
-  padding: 30px;
-}
-.blog-post{
-  border: 1px solid black;
-  display: flex;
-  flex-direction: column;
-  /* row-gap: 20px; */
-  background-color:rgb(246, 239, 239);
+  width: 80%;
+  background-color: #dbd8e3;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  margin-left: 115px;
+  padding: 20px;
+  border: 2px solid #ccc;
   border-radius: 20px;
   padding: 25px;
   overflow: hidden;
   min-height: 40vh;
   width: 60vw;
 
+.image-container img {
+  max-width: 100%;
+  height: 50vh;
+  border-radius: 20px;
+  transition: transform 0.3s ease-in-out;
+  width: fit-content;
+}
+
+.image-container:hover img {
+  transform: scale(1.03);
+}
+
+.content-container {
+  flex: 1;
+  padding: 10px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 10px;
+  margin-left: 15px;
+}
+
+.content-container h3 {
+  margin-top: -10px;
+  text-transform: uppercase;
+  background-color: #679a23;
+  width: fit-content;
+  padding: 4px;
+  color: white;
+  border: 1px solid #679a23;
+  border-radius: 6px;
+  font-size: 15px;
+}
+
+.content-container h1 {
+  text-transform: capitalize;
 }
 
 .content-container p {
-  font-size: 16px;
-  color: #4012e8;
   display: -webkit-box;
+  -webkit-line-clamp: 5;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 4;
   overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 20px;
+  letter-spacing: 0.5px;
+}
+
+/* ............................................................................ */
+
+.read-more-button {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  background-color: #606060f5;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  width: 150px;
+  height: 42px;
+  transition: background-color 0.5s ease-in-out;
+}
+
+.read-more-button:hover {
+  background-color: #414141;
+}
+
+.arrow {
+  margin-left: 8px;
+  animation: arrowAnimation 0.8s infinite;
+}
+
+@keyframes arrowAnimation {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(8px);
+  }
+  100% {
+    transform: translateX(0);
+  }
 }
 
 .content-container {
@@ -150,3 +220,4 @@
 }
 
 
+}

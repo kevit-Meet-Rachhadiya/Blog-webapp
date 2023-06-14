@@ -4,22 +4,22 @@ import Writeblog from "./components/Writeblog";
 import "./App.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Login from "./components/login";
+import SingleBlog from "./components/singleblog";
 
 function App() {
   const router = createBrowserRouter([
     { path: "/login", element: <Login /> },
     {
       path: "/",
-      element: (
-        <div>
-          <Blogs/>
-          {/* <Header /> */}
-        </div>
-      ),
+      element: <Blogs />,
     },
     {
       path: "/WriteBlog",
-      element: <Writeblog/>,
+      element: <Writeblog />,
+    },
+    {
+      path: "/singleBlog",
+      element: <SingleBlog />,
     },
   ]);
   return <RouterProvider router={router} />;

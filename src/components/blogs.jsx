@@ -3,10 +3,11 @@ import axios from "axios";
 import photo from "../Image/blog.png";
 import "../Css/blogs.css";
 import logo from "../Image/brandlogo.png";
-import { faAnglesDown } from "@fortawesome/free-solid-svg-icons";
+import { faAnglesDown, faAnglesRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { CSSTransition } from "react-transition-group";
 import Header from "./Header";
+import Footer from "./footer";
 
 function Blogs() {
   const [logoVisible, setLogoVisible] = useState(false);
@@ -14,6 +15,33 @@ function Blogs() {
   const [sloganVisible, setSloganVisible] = useState(false);
   const [arrowVisible, setArrowVisible] = useState(false);
   const [blogdata, setblogdata] = useState([]);
+
+  const Button = () => {
+    const [isHovered, setIsHovered] = useState(false);
+
+    const handleMouseEnter = () => {
+      setIsHovered(true);
+    };
+
+    const handleMouseLeave = () => {
+      setIsHovered(false);
+    };
+
+    return (
+      <button
+        className="read-more-button"
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+      >
+        Read More
+        {isHovered && (
+          <span className="arrow">
+            <FontAwesomeIcon icon={faAnglesRight} />
+          </span>
+        )}
+      </button>
+    );
+  };
 
   useEffect(() => {
     const timer1 = setTimeout(() => setLogoVisible(true), 1000);
@@ -30,30 +58,23 @@ function Blogs() {
   }, []);
 
   useEffect(() => {
-    axios
-      .get("http://192.168.1.120:1234/api/blogs/allblogs")
-      .then((response) => {
-        console.log(response.data);
-        setblogdata(response.data);
-      })
-      .catch((error) => {
-        console.error("Error fetching blog posts", error);
-      });
+    window.scrollTo(0, 0);
   }, []);
 
-  const handleDelete = (postId) => {
-    axios
-      .delete(`http://192.168.1.120:1234/api/blogs/${postId}`)
-      .then((response) => {
-        setblogdata((prevData) =>
-          prevData.filter((post) => post._id !== postId)
-        );
-      })
-      .catch((error) => {
-        console.error("Error deleting blog post", error);
-      });
-  };
+  useEffect(() => {
+    axios("http://192.168.1.150:1234/api/blogs/allblogs")
+      .then((responce) => {
+        console.log(responce.data);
 
+        setblogdata(responce.data);
+      })
+
+      .catch((error) => {
+        console.error("Error fetching blog data", error);
+      });
+    console.log("hello");
+  }, []);
+  console.log(blogdata[0]?.coverimage);
   return (
     <>
       <div className="containers">
@@ -82,7 +103,11 @@ function Blogs() {
           classNames="slogan-animation"
           unmountOnExit
         >
-          <p className="slogen">hellooooo</p>
+          <p className="slogen">
+            𝐄𝐱𝐩𝐥𝐨𝐫𝐞 𝐚 𝐰𝐨𝐫𝐥𝐝 𝐨𝐟 𝐢𝐝𝐞𝐚𝐬, 𝐢𝐧𝐬𝐩𝐢𝐫𝐚𝐭𝐢𝐨𝐧, 𝐚𝐧𝐝 𝐤𝐧𝐨𝐰𝐥𝐞𝐝𝐠𝐞 𝐚𝐭 𝐁𝐥𝐨𝐠𝐢𝐟𝐲.
+            𝐔𝐧𝐥𝐞𝐚𝐬𝐡 𝐲𝐨𝐮𝐫 𝐜𝐫𝐞𝐚𝐭𝐢𝐯𝐢𝐭𝐲, 𝐬𝐡𝐚𝐫𝐞 𝐲𝐨𝐮𝐫 𝐬𝐭𝐨𝐫𝐢𝐞𝐬, 𝐚𝐧𝐝 𝐞𝐧𝐠𝐚𝐠𝐞 𝐰𝐢𝐭𝐡 𝐚
+            𝐯𝐢𝐛𝐫𝐚𝐧𝐭 𝐜𝐨𝐦𝐦𝐮𝐧𝐢𝐭𝐲 𝐨𝐟 𝐩𝐚𝐬𝐬𝐢𝐨𝐧𝐚𝐭𝐞 𝐛𝐥𝐨𝐠𝐠𝐞𝐫𝐬.
+          </p>
         </CSSTransition>
         <CSSTransition
           in={arrowVisible}
@@ -100,27 +125,21 @@ function Blogs() {
         </CSSTransition>
       </div>
       <Header />
-      <div className="blog-post-container">
-        {blogdata.map((post) => (
-          <div className="blog-post" key={post._id}>
-            <img
-              src={post.coverimage}
-              alt="BlogPostImage"
-              className="image-container"
-            />
-            <div className="content-container">
-              <h4>{post.categories}</h4>
-              <h2>{post.headings}</h2>
-              <p>{post.contents}</p>
-            </div>
-            <div className="buttons">
-              <button className="blog-maintain-btn">READ MORE</button>
-              <button className="blog-maintain-btn">EDIT</button>
-              <button className="blog-maintain-btn" onClick={() => handleDelete(post._id)}>DELETE</button>
-            </div>
+      {blogdata.map((post) => (
+        <div className="blog-post" key={post.id}>
+          <div className="image-container">
+            <img src={post.coverimage} alt="BlogPostImage" />
           </div>
-        ))}
-      </div>
+          <div className="content-container">
+            <h3>{post.categories}</h3>
+            <h1>{post.headings}</h1>
+            <p>{post.contents}</p>
+            <Button />
+          </div>
+        </div>
+      ))}
+
+      <Footer />
     </>
   );
 }
