@@ -1,0 +1,116 @@
+.form-containers {
+  width: 100%;
+  height: 75vh;
+  background-color: rgb(104, 104, 104);
+}
+#blogimg {
+  width: 100%;
+  height: 75vh;
+}
+.uploaditem {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 75vh;
+  width: 100%;
+  font-size: 1.5rem;
+}
+#select-menu {
+  margin-left: 3vw;
+  font-size: 1rem;
+  display: none;
+}
+.category {
+  width: 50%;
+  height: 35px;
+  font-size: 18px;
+  border: none;
+  padding: 10px;
+  text-align: center;
+  margin-top: 25px;
+  border-radius: 10px;
+  text-transform: uppercase;
+  outline: none;
+}
+
+.category:focus,
+.heading:focus,
+.blog-content:focus {
+  border: 3px solid green;
+  box-shadow: 0 0 8px #26bf47;
+}
+
+.heading {
+  width: 50%;
+  height: 35px;
+  font-size: 30px;
+  padding: 10px;
+  text-align: center;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+}
+.category::placeholder {
+  text-align: center;
+  font-size: 17px;
+}
+.heading::placeholder {
+  text-align: center;
+  font-size: 17px;
+}
+.category-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* margin: 40px; */
+  row-gap: 25px;
+  /* padding: 20px; */
+}
+.blog-content {
+  width: 95%;
+  height: 35vh;
+  font-size: 20px;
+  padding-left: 15px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+}
+.btn-container {
+  display: flex;
+  justify-content: center;
+  column-gap: 60px;
+}
+.blog-button {
+  width: 150px;
+  padding: 10px;
+  text-align: center;
+  background-color: rgb(104, 104, 104);
+  border: 1px solid rgb(104, 104, 104);
+  color: white;
+  font-size: 18px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.blog-button:hover {
+  border: 1px solid rgb(53, 254, 53);
+  box-shadow: 0 0 8px #26bf47;
+}
+
+.generateblogimg {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  column-gap: 50px;
+  padding: 25px;
+  margin-bottom: 20px;
+  row-gap: 25px;
+}
+.uploadicon {
+  height: 60px;
+  width: 60px;
+  cursor: pointer;
+}
