@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 import { ToastContainer, toast } from "react-toastify";
 
-
 const Login = () => {
   const [isSignUp, setIsSignUp] = useState(false);
   const [username, setUsername] = useState("");
@@ -29,12 +28,12 @@ const Login = () => {
 
   const handleSignInClick = () => {
     setIsSignUp(false);
-    setUsernameError("")
-    setEmailError("")
-    setPasswordError("")
-    setUsername("")
-    setEmail("")
-    setPassword("")
+    setUsernameError("");
+    setEmailError("");
+    setPasswordError("");
+    setUsername("");
+    setEmail("");
+    setPassword("");
   };
 
   const handleUsernameChange = (e) => {
@@ -89,7 +88,6 @@ const Login = () => {
     }
   };
 
-  
   const handleSignUpSubmit = (e) => {
     e.preventDefault();
 
@@ -194,17 +192,17 @@ const Login = () => {
         </div>
       </div>
       <ToastContainer
-position="top-centers"
-autoClose={3000}
-hideProgressBar={false}
-newestOnTop={false}
-closeOnClick
-rtl={false}
-pauseOnFocusLoss
-draggable
-pauseOnHover
-theme="colored"
-/>
+        position="top-centers"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
     </>
   );
 };
